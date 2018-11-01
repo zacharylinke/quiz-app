@@ -11,12 +11,14 @@ let cache = [];// Array is OK!
 cache[0] = fs.readFileSync( __dirname + '/app/index.html');
 // cache[1] = fs.readFileSync( __dirname + '/views/testview.html');
 
-app.get('/', (req, res) => {
+
+
+app.use(express.static('app'));
+
+app.get('*', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.send( cache[0] );
 });
-
-app.use(express.static('app'));
 
 // app.get('/test', (req, res) => {
 //     res.setHeader('Content-Type', 'text/html');
