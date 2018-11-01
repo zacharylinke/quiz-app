@@ -1,0 +1,148 @@
+$form-nav-item: #0073aa;
+$border-color: #ddd;
+
+.quiz-admin-box {
+  display: flex;
+}
+
+.quiz-form {
+  flex-grow: 2;
+  margin-left: 1em;
+}
+
+.quiz-form-nav {
+  margin-right: 10px;
+  max-height: 600px;
+  overflow-y: scroll;
+
+  .tray {
+    margin-bottom: 2em;
+  }
+
+  .add-new {
+    text-align: center;
+
+    i {
+      color: $form-nav-item;
+      font-size: 2.75em;
+      display: inline-block;
+      width: 100%;
+
+      &:hover {
+        color: lighten($form-nav-item, 10%);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.form-nav-item {
+  background-color: $form-nav-item;
+  box-sizing: border-box;
+  color: #fff;
+  height: 10em;
+  margin-bottom: 10px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  width: 10em;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .selection-border {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    border: 3px solid rgba(255,255,255,0);
+    transition: border-color .2s;
+  }
+
+  &.active .selection-border,
+  &:hover .selection-border {
+    opacity: 1;
+    color: #fff;
+    border-color: #fff;
+    transition: none;
+  }
+
+  .delete-item {
+    position: absolute;
+    top: .45em;
+    right: .45em;
+    color: rgba(255,255,255,0);
+    font-size: .7em;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  &:hover .delete-item {
+    opacity: 1;
+    color: #fff;
+    transition: none;
+  } 
+}
+
+.score-description {
+  border: 1px solid $border-color;
+}
+
+.btn-add-answer {
+  background-color: $form-nav-item;
+  color: white;
+  display: block;
+  margin: 1em 10%;
+  padding: 10px 18px;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($form-nav-item, 10%);
+  }
+}
+
+input[type="text"] {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.answer {
+  margin-bottom: 10px;
+  position: relative;
+
+  input {
+    padding: 10px 70px 10px 38px;
+  }
+
+  i {
+    font-size: 1.75em;
+    left: 15px;
+    position: absolute;
+    top: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.fa-check-circle {
+      color: #21c650;
+    }
+  }
+
+  .delete-answer {
+    background-color: #d20000;
+    color: white;
+    padding: 5px 6px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-115%, -50%);
+
+    &:hover {
+      background-color: lighten(#d20000, 7%);
+      cursor: pointer;
+    }
+  }
+}
