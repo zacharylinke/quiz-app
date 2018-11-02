@@ -29617,26 +29617,21 @@ var Answer = function Answer(_ref) {
     );
   }
   var correctClass = !answer.correct ? 'fa-circle' : 'fa-check-circle';
-  var Food = _react2.default.createElement(
-    'div',
-    null,
-    'Favorite Food: ',
-    _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: ['far', 'circle'] })
-  );
+  var correctAnswer = _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+    icon: !answer.correct ? ['far', 'circle'] : ['far', 'check-circle'],
+    className: 'fa-lg correct ' + correctClass,
+    'aria-hidden': 'true',
+    onClick: function onClick() {
+      return toggleCorrect({
+        questionId: currentForm.id,
+        answerId: answer.id
+      });
+    }
+  });
   return _react2.default.createElement(
     'div',
     { className: 'answer' },
-    Food,
-    _react2.default.createElement('i', {
-      className: 'correct far ' + correctClass,
-      'aria-hidden': 'true',
-      onClick: function onClick() {
-        return toggleCorrect({
-          questionId: currentForm.id,
-          answerId: answer.id
-        });
-      }
-    }),
+    correctAnswer,
     _react2.default.createElement('input', {
       className: 'large-text',
       placeholder: 'Answer ' + answer.id,
@@ -30403,7 +30398,7 @@ var store = (0, _redux.createStore)(_reducers2.default, window.__REDUX_DEVTOOLS_
 /* eslint-enable */
 
 /* eslint-disable no-unused-vars */
-_fontawesomeSvgCore.library.add(_freeRegularSvgIcons.faCircle);
+_fontawesomeSvgCore.library.add(_freeRegularSvgIcons.faCircle, _freeRegularSvgIcons.faCheckCircle);
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,

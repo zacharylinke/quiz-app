@@ -13,22 +13,20 @@ const Answer =
         >Delete</span>);
     }
     const correctClass = !answer.correct ? 'fa-circle' : 'fa-check-circle';
-    const Food = (
-      <div>
-        Favorite Food: <FontAwesomeIcon icon={ ['far', 'circle'] } />
-      </div>
+    const correctAnswer = (
+      <FontAwesomeIcon
+        icon={ !answer.correct ? ['far', 'circle'] : ['far', 'check-circle'] }
+        className={ `fa-lg correct ${correctClass}` }
+        aria-hidden="true"
+        onClick={ () => toggleCorrect({
+          questionId: currentForm.id,
+          answerId: answer.id,
+        }) }
+      />
     );
     return (
       <div className="answer">
-        { Food }
-        <i
-          className={ `correct far ${correctClass}` }
-          aria-hidden="true"
-          onClick={ () => toggleCorrect({
-            questionId: currentForm.id,
-            answerId: answer.id,
-          }) }
-        />
+        { correctAnswer }
         <input
           className="large-text"
           placeholder={ `Answer ${answer.id}` }

@@ -1,5 +1,6 @@
 $form-nav-item: #0073aa;
 $border-color: #ddd;
+$medium-gray: #aaa;
 
 .quiz-admin-box {
   display: flex;
@@ -114,14 +115,12 @@ input[type="text"] {
   position: relative;
 
   input {
+    margin-left: 1em;
     padding: 10px 70px 10px 38px;
   }
 
-  i {
-    font-size: 1.75em;
-    left: 15px;
-    position: absolute;
-    top: 10px;
+  .correct {
+    color: $medium-gray;
 
     &:hover {
       cursor: pointer;

@@ -83,15 +83,13 @@ input[type="text"] {
   margin-bottom: 10px;
   position: relative; }
   .answer input {
+    margin-left: 1em;
     padding: 10px 70px 10px 38px; }
-  .answer i {
-    font-size: 1.75em;
-    left: 15px;
-    position: absolute;
-    top: 10px; }
-    .answer i:hover {
+  .answer .correct {
+    color: #aaa; }
+    .answer .correct:hover {
       cursor: pointer; }
-    .answer i.fa-check-circle {
+    .answer .correct.fa-check-circle {
       color: #21c650; }
   .answer .delete-answer {
     background-color: #d20000;

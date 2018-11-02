@@ -1,7 +1,7 @@
 {
-  "name": "tblz_quizzes",
+  "name": "quiz-react-app",
   "version": "1.0.0",
-  "description": "Enables WordPress admin quiz creation, user quiz interaction, and quiz result storage",
+  "description": "Enables quiz creation, user quiz interaction, and quiz result storage",
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
