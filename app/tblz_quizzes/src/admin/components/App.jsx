@@ -28,7 +28,7 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="container">
           <Navigation />
           <Switch>
             <Route path="/" component={ Quizzes } exact />
