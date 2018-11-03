@@ -29,7 +29,7 @@ const Answer =
         <div className="col-md-1">
           { correctAnswer }
         </div>
-        <div className="col-md-9">
+        <div className="col">
           <input
             className="form-control"
             placeholder={ `Answer ${answer.id}` }
@@ -42,7 +42,7 @@ const Answer =
             value={ currentQuestion.answers[answer.id - 1].text }
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-auto">
           { deleteBtn }
         </div>
       </div>

@@ -23,16 +23,17 @@ $medium-gray: #aaa;
   .add-new {
     text-align: center;
 
-    i {
+    svg {
       color: $form-nav-item;
-      font-size: 2.75em;
-      display: inline-block;
-      width: 100%;
 
       &:hover {
         color: lighten($form-nav-item, 10%);
         cursor: pointer;
       }
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
@@ -94,10 +95,11 @@ $medium-gray: #aaa;
 .btn-add-answer {
   background-color: $form-nav-item;
   color: white;
-  display: block;
-  margin: 1em 10%;
-  padding: 10px 18px;
-  text-align: center;
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }
 
   &:hover {
     cursor: pointer;

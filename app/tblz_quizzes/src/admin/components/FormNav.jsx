@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FormNavItemContainer from '../containers/FormNavItemContainer';
+
+const addItemBtn = (
+  <FontAwesomeIcon icon="plus-circle" className="fa-2x" />
+  );
 
 const FormNav = ({ questions, changeCurrent, scores, addQuestion, addScore }) =>
   <div className="quiz-form-nav">
@@ -22,7 +27,7 @@ const FormNav = ({ questions, changeCurrent, scores, addQuestion, addScore }) =>
           addQuestion(newId);
           changeCurrent({ id: newId, formType: 'question' });
         } }
-      ><i className="dashicons dashicons-plus-alt" /></div>
+      >{ addItemBtn }</div>
     </div>
     <div className="scores-tray tray">
       { scores.map(score =>
@@ -42,7 +47,7 @@ const FormNav = ({ questions, changeCurrent, scores, addQuestion, addScore }) =>
           addScore(newScoreId);
           changeCurrent({ id: newScoreId, formType: 'score' });
         } }
-      ><i className="dashicons dashicons-plus-alt" /></div>
+      >{ addItemBtn }</div>
     </div>
   </div>;
 
