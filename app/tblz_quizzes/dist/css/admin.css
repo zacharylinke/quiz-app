@@ -82,11 +82,12 @@ input[type="text"] {
 .answer {
   margin-bottom: 10px;
   position: relative; }
-  .answer input {
-    margin-left: 1em;
-    padding: 10px 70px 10px 38px; }
   .answer .correct {
-    color: #aaa; }
+    color: #aaa;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%); }
     .answer .correct:hover {
       cursor: pointer; }
     .answer .correct.fa-check-circle {

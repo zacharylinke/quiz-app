@@ -114,13 +114,12 @@ input[type="text"] {
   margin-bottom: 10px;
   position: relative;
 
-  input {
-    margin-left: 1em;
-    padding: 10px 70px 10px 38px;
-  }
-
   .correct {
     color: $medium-gray;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     &:hover {
       cursor: pointer;

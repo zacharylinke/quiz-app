@@ -29606,9 +29606,9 @@ var Answer = function Answer(_ref) {
   var deleteBtn = null;
   if (currentQuestion.answers.length > 2) {
     deleteBtn = _react2.default.createElement(
-      'span',
+      'button',
       {
-        className: 'delete-answer',
+        className: 'btn btn-danger',
         onClick: function onClick() {
           return deleteAnswer({ questionId: currentQuestion.id, answerId: answer.id });
         }
@@ -29630,22 +29630,34 @@ var Answer = function Answer(_ref) {
   });
   return _react2.default.createElement(
     'div',
-    { className: 'answer' },
-    correctAnswer,
-    _react2.default.createElement('input', {
-      className: 'large-text',
-      placeholder: 'Answer ' + answer.id,
-      onChange: function onChange(event) {
-        return updateAnswer({
-          questionId: currentForm.id,
-          answerId: answer.id,
-          answerText: event.target.value
-        });
-      },
-      type: 'text',
-      value: currentQuestion.answers[answer.id - 1].text
-    }),
-    deleteBtn
+    { className: 'answer form-row' },
+    _react2.default.createElement(
+      'div',
+      { className: 'col-md-1' },
+      correctAnswer
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'col-md-9' },
+      _react2.default.createElement('input', {
+        className: 'form-control',
+        placeholder: 'Answer ' + answer.id,
+        onChange: function onChange(event) {
+          return updateAnswer({
+            questionId: currentForm.id,
+            answerId: answer.id,
+            answerText: event.target.value
+          });
+        },
+        type: 'text',
+        value: currentQuestion.answers[answer.id - 1].text
+      })
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'col-md-2' },
+      deleteBtn
+    )
   );
 };
 
@@ -29995,14 +30007,14 @@ var QuestionForm = function QuestionForm(_ref) {
   var currentQuestion = questions[currentForm.id - 1];
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'form-group' },
     _react2.default.createElement(
       'h4',
       null,
       'Question'
     ),
     _react2.default.createElement('input', {
-      className: 'large-text question',
+      className: 'form-control question',
       type: 'text',
       onChange: function onChange(event) {
         return updateQuestion({ id: currentForm.id, text: event.target.value });
@@ -30026,9 +30038,9 @@ var QuestionForm = function QuestionForm(_ref) {
       });
     }),
     _react2.default.createElement(
-      'div',
+      'button',
       {
-        className: 'btn-add-answer',
+        className: 'btn btn-lg btn-primary btn-block',
         onClick: function onClick() {
           var newAnswerId = currentQuestion.answers.length + 1;
           addAnswer({

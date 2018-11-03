@@ -7,10 +7,10 @@ const QuestionForm =
     addAnswer, deleteAnswer, toggleCorrect }) => {
     const currentQuestion = questions[currentForm.id - 1];
     return (
-      <div>
+      <div className="form-group">
         <h4>Question</h4>
         <input
-          className="large-text question"
+          className="form-control question"
           type="text"
           onChange={ event => updateQuestion(
             { id: currentForm.id, text: event.target.value })
@@ -29,8 +29,8 @@ const QuestionForm =
             toggleCorrect={ toggleCorrect }
           />,
         ) }
-        <div
-          className="btn-add-answer"
+        <button
+          className="btn btn-lg btn-primary btn-block"
           onClick={ () => {
             const newAnswerId = currentQuestion.answers.length + 1;
             addAnswer({
@@ -38,7 +38,7 @@ const QuestionForm =
               answerId: newAnswerId,
             });
           } }
-        >Add an answer</div>
+        >Add an answer</button>
       </div>
     );
   };

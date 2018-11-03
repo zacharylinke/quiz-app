@@ -7,10 +7,10 @@ const Answer =
     let deleteBtn = null;
     if (currentQuestion.answers.length > 2) {
       deleteBtn =
-        (<span
-          className="delete-answer"
+        (<button
+          className="btn btn-danger"
           onClick={ () => deleteAnswer({ questionId: currentQuestion.id, answerId: answer.id }) }
-        >Delete</span>);
+        >Delete</button>);
     }
     const correctClass = !answer.correct ? 'fa-circle' : 'fa-check-circle';
     const correctAnswer = (
@@ -25,20 +25,26 @@ const Answer =
       />
     );
     return (
-      <div className="answer">
-        { correctAnswer }
-        <input
-          className="large-text"
-          placeholder={ `Answer ${answer.id}` }
-          onChange={ event => updateAnswer({
-            questionId: currentForm.id,
-            answerId: answer.id,
-            answerText: event.target.value,
-          }) }
-          type="text"
-          value={ currentQuestion.answers[answer.id - 1].text }
-        />
-        { deleteBtn }
+      <div className="answer form-row">
+        <div className="col-md-1">
+          { correctAnswer }
+        </div>
+        <div className="col-md-9">
+          <input
+            className="form-control"
+            placeholder={ `Answer ${answer.id}` }
+            onChange={ event => updateAnswer({
+              questionId: currentForm.id,
+              answerId: answer.id,
+              answerText: event.target.value,
+            }) }
+            type="text"
+            value={ currentQuestion.answers[answer.id - 1].text }
+          />
+        </div>
+        <div className="col-md-2">
+          { deleteBtn }
+        </div>
       </div>
     );
   };
