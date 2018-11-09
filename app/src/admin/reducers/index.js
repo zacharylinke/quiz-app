@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
-import questions from './questions';
 import currentForm from './currentForm';
+import questions from './questions';
+import quizTitle from './quizTitle';
 import scores from './scores';
 
+
 const quizAdmin = combineReducers({
-  questions,
   currentForm,
+  questions,
+  quizTitle,
   scores,
 });
 

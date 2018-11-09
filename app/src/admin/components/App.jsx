@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import FormNavContainer from '../containers/FormNavContainer';
 import FormContainer from '../containers/FormContainer';
+import QuizTitleContainer from '../containers/QuizTitleContainer';
 
 
 const Quizzes = () => (
@@ -12,9 +13,12 @@ const Quizzes = () => (
 );
 
 const QuizAdminInit = () => (
-  <div className="quiz-admin-box">
-    <FormNavContainer />
-    <FormContainer />
+  <div>
+    <QuizTitleContainer />
+    <div className="quiz-admin-box">
+      <FormNavContainer />
+      <FormContainer />
+    </div>
   </div>
 );
 

@@ -4,14 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Answer =
   ({ currentQuestion, currentForm, updateAnswer, answer, deleteAnswer, toggleCorrect }) => {
-    let deleteBtn = null;
-    if (currentQuestion.answers.length > 2) {
-      deleteBtn =
-        (<button
-          className="btn btn-danger"
-          onClick={ () => deleteAnswer({ questionId: currentQuestion.id, answerId: answer.id }) }
-        >Delete</button>);
-    }
+    const deleteBtn = (
+      <button
+        disabled={ currentQuestion.answers.length < 3 }
+        className="btn btn-danger"
+        onClick={ () => deleteAnswer({ questionId: currentQuestion.id, answerId: answer.id }) }
+      >Delete</button>);
     const correctClass = !answer.correct ? 'fa-circle' : 'fa-check-circle';
     const correctAnswer = (
       <FontAwesomeIcon

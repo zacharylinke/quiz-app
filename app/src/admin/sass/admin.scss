@@ -13,7 +13,7 @@ $medium-gray: #aaa;
 
 .quiz-form-nav {
   margin-right: 10px;
-  max-height: 600px;
+  max-height: 650px;
   overflow-y: scroll;
   padding-right: 1em;
 
@@ -41,6 +41,7 @@ $medium-gray: #aaa;
 
 .form-nav-item {
   background-color: $form-nav-item;
+  border-radius: 4px;
   box-sizing: border-box;
   color: #fff;
   height: 10em;
@@ -55,6 +56,7 @@ $medium-gray: #aaa;
   }
 
   .selection-border {
+    border-radius: 4px;
     position: absolute;
     top: 2px;
     bottom: 2px;

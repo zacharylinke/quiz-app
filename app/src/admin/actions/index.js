@@ -1,3 +1,4 @@
+export const UPDATE_QUIZ_TITLE = 'UPDATE_QUIZ_TITLE';
 export const UPDATE_QUESTION = 'UPDATE_QUESTION';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION';
@@ -9,6 +10,10 @@ export const TOGGLE_CORRECT = 'TOGGLE_CORRECT';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const ADD_SCORE = 'ADD_SCORE';
 export const DELETE_SCORE = 'DELETE_SCORE';
+
+export function updateQuizTitle(attrs) {
+  return { type: UPDATE_QUIZ_TITLE, attrs };
+}
 
 export function updateQuestion(attrs) {
   return { type: UPDATE_QUESTION, attrs };

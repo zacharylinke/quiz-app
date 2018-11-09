@@ -7,7 +7,7 @@
 
 .quiz-form-nav {
   margin-right: 10px;
-  max-height: 600px;
+  max-height: 650px;
   overflow-y: scroll;
   padding-right: 1em; }
   .quiz-form-nav .tray {
@@ -24,6 +24,7 @@
 
 .form-nav-item {
   background-color: #0073aa;
+  border-radius: 4px;
   box-sizing: border-box;
   color: #fff;
   height: 10em;
@@ -35,6 +36,7 @@
   .form-nav-item:hover {
     cursor: pointer; }
   .form-nav-item .selection-border {
+    border-radius: 4px;
     position: absolute;
     top: 2px;
     bottom: 2px;
