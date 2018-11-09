@@ -8,7 +8,8 @@
 .quiz-form-nav {
   margin-right: 10px;
   max-height: 600px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  padding-right: 1em; }
   .quiz-form-nav .tray {
     margin-bottom: 2em; }
   .quiz-form-nav .add-new {

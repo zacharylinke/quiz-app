@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const FormNavItem =
 ({ items, text, currentForm, id, deleteQuestion, deleteScore, changeCurrent, itemType }) => {
@@ -13,6 +14,21 @@ const FormNavItem =
   }
   if (numItems > showDelete) {
     const currentId = id === numItems ? id - 1 : id;
+    // deleteBtn = (
+    //   <div
+    //     className="delete-item"
+    //     onClick={ (e) => {
+    //       if (itemType === 'question') {
+    //         deleteQuestion(id);
+    //       } else if (itemType === 'score') {
+    //         deleteScore(id);
+    //       }
+    //       changeCurrent({ id: currentId, formType: itemType });
+    //       e.stopPropagation();
+    //     } }
+    //   >
+    //     <i className="dashicons dashicons-trash" />
+    //   </div>);
     deleteBtn = (
       <div
         className="delete-item"
@@ -26,8 +42,9 @@ const FormNavItem =
           e.stopPropagation();
         } }
       >
-        <i className="dashicons dashicons-trash" />
-      </div>);
+        <FontAwesomeIcon className="fa-2x" icon={ ['far', 'trash-alt'] } />
+      </div>
+    );
   }
   return (
     <div onClick={ () => changeCurrent({ id, formType: itemType }) } className={ elClass } >

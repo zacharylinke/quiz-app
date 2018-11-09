@@ -28,13 +28,15 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
+        <div>
           <Navigation />
-          <Switch>
-            <Route path="/" component={ Quizzes } exact />
-            <Route path="/new-quiz" component={ QuizAdminInit } />
-            <Route component={ NotFound } />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route path="/" component={ Quizzes } exact />
+              <Route path="/new-quiz" component={ QuizAdminInit } />
+              <Route component={ NotFound } />
+            </Switch>
+          </div>
         </div>
       </BrowserRouter>
     );
