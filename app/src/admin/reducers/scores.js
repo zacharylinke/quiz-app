@@ -1,6 +1,10 @@
 const initScores = [
-  { id: 1, label: 'score 0% - 50%', title: '', description: '', low: 0, high: 50 },
-  { id: 2, label: 'score 50% - 100%', title: '', description: '', low: 50, high: 100 },
+  {
+    id: 1, label: 'score 0% - 50%', title: '', description: '', low: 0, high: 50,
+  },
+  {
+    id: 2, label: 'score 50% - 100%', title: '', description: '', low: 50, high: 100,
+  },
 ];
 
 const updatedScores = (scores) => {
@@ -49,7 +53,8 @@ const scores = (state = initScores, action) => {
             return Object.assign({}, score, {
               title: action.attrs.title,
             });
-          } else if (action.attrs.field === 'description') {
+          }
+          if (action.attrs.field === 'description') {
             return Object.assign({}, score, {
               description: action.attrs.description,
             });

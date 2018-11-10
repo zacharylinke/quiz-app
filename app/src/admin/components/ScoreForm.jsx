@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TinyMCEInput from 'react-tinymce-input';
+// import TinyMCEInput from 'react-tinymce-input';
 
-const ScoreForm = ({ currentForm, scores, updateScore }) =>
+const ScoreForm = ({ currentForm, scores, updateScore }) => (
   <div>
     <h4>Title</h4>
     <input
@@ -12,20 +12,8 @@ const ScoreForm = ({ currentForm, scores, updateScore }) =>
       value={ scores[currentForm.id - 1].title }
     />
     <h4>Description</h4>
-    <div className="score-description">
-      <TinyMCEInput
-        value={ scores[currentForm.id - 1].description }
-        tinymceConfig={ {
-          plugins: 'wplink image',
-          toolbar: 'bold italic underline | numlist bullist | link',
-          statusbar: false,
-          menubar: false,
-          border: '1 1 1 1',
-        } }
-        onChange={ event => updateScore({ id: currentForm.id, description: event, field: 'description' }) }
-      />
-    </div>
-  </div>;
+  </div>
+);
 
 export default ScoreForm;
 

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import QuestionForm from '../components/QuestionForm';
-import { updateQuestion, updateAnswer, addAnswer, deleteAnswer, toggleCorrect } from '../actions';
+import {
+  updateQuestion, updateAnswer, addAnswer, deleteAnswer, toggleCorrect,
+} from '../actions';
 
 const mapStateToProps = state => ({ questions: state.questions, currentForm: state.currentForm });
 

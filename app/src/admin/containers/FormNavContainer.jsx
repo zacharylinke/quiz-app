@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import FormNav from '../components/FormNav';
-import { addQuestion, changeCurrent, addScore } from '../actions/';
+import { addQuestion, changeCurrent, addScore } from '../actions';
 
 const mapStateToProps = state => ({
   questions: state.questions,
@@ -25,4 +25,3 @@ const FormNavContainer = connect(
 )(FormNav);
 
 export default FormNavContainer;
-

@@ -10,8 +10,8 @@ const QuizTitle = ({ quizTitle, updateQuizTitle }) => (
           className="form-control"
           type="text"
           onChange={ event => updateQuizTitle(
-            { text: event.target.value })
-          }
+            { text: event.target.value },
+          ) }
           value={ quizTitle.text }
         />
       </div>

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const FormNavItem =
-({ items, text, currentForm, id, deleteQuestion, deleteScore, changeCurrent, itemType }) => {
+const FormNavItem = ({
+  items, text, currentForm, id, deleteQuestion, deleteScore, changeCurrent, itemType,
+}) => {
   const elClass = id === currentForm.id && itemType === currentForm.formType ? 'form-nav-item active' : 'form-nav-item';
   const label = itemType === 'question' ? `Question ${id}` : items[id - 1].label;
   let deleteBtn = null;
@@ -14,25 +15,19 @@ const FormNavItem =
   }
   if (numItems > showDelete) {
     const currentId = id === numItems ? id - 1 : id;
-    // deleteBtn = (
-    //   <div
-    //     className="delete-item"
-    //     onClick={ (e) => {
-    //       if (itemType === 'question') {
-    //         deleteQuestion(id);
-    //       } else if (itemType === 'score') {
-    //         deleteScore(id);
-    //       }
-    //       changeCurrent({ id: currentId, formType: itemType });
-    //       e.stopPropagation();
-    //     } }
-    //   >
-    //     <i className="dashicons dashicons-trash" />
-    //   </div>);
     deleteBtn = (
       <div
         className="delete-item"
         onClick={ (e) => {
+          if (itemType === 'question') {
+            deleteQuestion(id);
+          } else if (itemType === 'score') {
+            deleteScore(id);
+          }
+          changeCurrent({ id: currentId, formType: itemType });
+          e.stopPropagation();
+        } }
+        onKeyDown={ (e) => {
           if (itemType === 'question') {
             deleteQuestion(id);
           } else if (itemType === 'score') {
@@ -47,7 +42,11 @@ const FormNavItem =
     );
   }
   return (
-    <div onClick={ () => changeCurrent({ id, formType: itemType }) } className={ elClass } >
+    <div
+      className={ elClass }
+      onClick={ () => changeCurrent({ id, formType: itemType }) }
+      onKeyDown={ () => changeCurrent({ id, formType: itemType }) }
+    >
       <div>{ label }</div>
       <div>{ text.length > 0 ? text : 'untitled' }</div>
       <div className="selection-border" />

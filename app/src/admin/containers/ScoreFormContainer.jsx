@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ScoreForm from '../components/ScoreForm';
-import { updateScore } from '../actions/';
+import { updateScore } from '../actions';
 
 const mapStateToProps = state => ({ currentForm: state.currentForm, scores: state.scores });
 

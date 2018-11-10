@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Navigation from '../components/Navigation';
+import Navigation from './Navigation';
 import FormNavContainer from '../containers/FormNavContainer';
 import FormContainer from '../containers/FormContainer';
 import QuizTitleContainer from '../containers/QuizTitleContainer';

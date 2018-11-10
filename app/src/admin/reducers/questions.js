@@ -85,8 +85,9 @@ const questions = (state = defaultQuestion, action) => {
     case 'DELETE_ANSWER':
       return state.map((question, index) => {
         if (index + 1 === action.attrs.questionId) {
-          let answerDeleted =
-            question.answers.filter(answer => answer.id !== action.attrs.answerId);
+          let answerDeleted = question
+            .answers
+            .filter(answer => answer.id !== action.attrs.answerId);
           answerDeleted = answerDeleted.map((answer, index2) => {
             let answerObj = answer;
             answerObj = Object.assign({}, answer, {

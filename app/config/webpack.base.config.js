@@ -1,6 +1,7 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: "./src/admin/index.jsx",
@@ -19,9 +20,6 @@ module.exports = {
             use: [
                 {
                     loader: "babel-loader",
-                    options: {
-                        presets: ['env']
-                    }
                 },
                 {
                     loader: "eslint-loader",
@@ -30,8 +28,13 @@ module.exports = {
         },
         {
             test: /\.scss$/,
-            loaders: ExtractTextPlugin.extract('css-loader!sass-loader'), 
-
+            use: [
+                // fallback to style-loader in development
+                //process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                "style-loader",
+                "css-loader",
+                "sass-loader"
+            ]
         },
         {
             test: /\.css$/,
@@ -40,9 +43,15 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin({
-            filename: 'css/admin.css',
-            allChunks: true,
+        new HtmlWebpackPlugin({ 
+            template: './src/index.html', 
+            filename: './index.html' 
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         }),
         new StyleLintPlugin({
           configFile: '.stylelintrc',

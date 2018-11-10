@@ -28,6 +28,5 @@ ReactDOM.render(
   <Provider store={ store }>
     <App />
   </Provider>,
-  document.getElementById('quiz-layout'),
+  document.getElementById('app'),
 );
-

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import FormNavItem from '../components/FormNavItem';
-import { changeCurrent, deleteQuestion, deleteScore } from '../actions/';
+import { changeCurrent, deleteQuestion, deleteScore } from '../actions';
 
 const mapStateToProps = state => ({
   questions: state.questions,
