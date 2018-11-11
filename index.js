@@ -8,12 +8,12 @@ const port = 3000;
 const app = express();
 
 let cache = [];// Array is OK!
-cache[0] = fs.readFileSync( __dirname + '/app/index.html');
+cache[0] = fs.readFileSync( __dirname + '/app/dist/index.html');
 // cache[1] = fs.readFileSync( __dirname + '/views/testview.html');
 
 
 
-app.use(express.static('app'));
+app.use(express.static('app/dist'));
 
 app.get('*', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
