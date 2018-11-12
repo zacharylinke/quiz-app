@@ -6,12 +6,13 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const APP_DIR = path.resolve(__dirname, '../src/index.jsx');
 
 module.exports = env => {
   const { PLATFORM, VERSION } = env;
   return merge([
     {
-      entry: "./src/index.jsx",
+      entry: ['@babel/polyfill', APP_DIR],
         resolve: {
           extensions: ['.js', '.jsx', '.json'],
         },
