@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// TODO - is WriteFilePlugin necessary for CopyWebackPlugin to work
+// https://github.com/webpack-contrib/copy-webpack-plugin/issues/29
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const APP_DIR = path.resolve(__dirname, '../src/index.jsx');
 
