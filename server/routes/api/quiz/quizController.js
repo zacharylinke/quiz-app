@@ -1,0 +1,70 @@
+const Quiz = require('./quizModel');
+const _ = require('lodash');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/quizapp');
+
+exports.params = function(req, res, next, id) {
+  Quiz.findById(id)
+    .then(function(quiz) {
+      if(!quiz) {
+        next(new Error('Quiz not found'));
+      } else {
+        req.quiz = quiz;
+      }
+    }, function(err) {
+      next(err);
+    });
+};
+
+exports.delete = function (req, res) {
+  Quiz.deleteOne(req.quiz)
+    .then(function(quiz) {
+      res.json(quiz);
+    }, function(err) {
+      next(err);
+    });
+};
+
+exports.get = function (req, res) {
+  Quiz.find()
+    .then(function(quizzes) {
+      if(!quizzes) {
+        next(new Error('Quiz save failed'));
+      } else {
+        res.json(quizzes);
+      }
+  }, function(err) {
+    next(err);
+  });
+};
+
+exports.getOne = function (req, res) {
+  res.json(req.quiz);
+};
+
+exports.post = function (req, res) {
+  Quiz.create(req.body)
+    .then( function(quiz) {
+      if(!quiz) {
+        next(new Error('Quiz save failed'));
+      } else {
+        res.json(quiz);
+      }
+    }, function(err) {
+      next(err);
+    });
+};
+
+exports.put = function (req, res) {
+  const quiz = req.quiz;
+  const update = req.body;
+
+  _.merge(quiz, update);
+  quiz.save(function(err, saved) {
+    if (err) {
+      next(err);
+    } else {
+      res.json(saved);
+    }
+  });
+};

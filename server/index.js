@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const http = require('http');
 
 const app = express();
 
@@ -8,15 +7,19 @@ const app = express();
 app.use('/', express.static(path.join(__dirname, '..', 'dist')));
 app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
+const api = require('./routes/api')
 const routes = require('./routes');
 
+app.use('/api/v1', api);
 app.use('/', routes);
 
-/** Get port from environment and store in Express. */
-const port = process.env.PORT || '3000';
-app.set('port', port);
+/** Handle Error */
+app.use(function(err, req, res, next) {
+    if(err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+  });
 
-/** Create HTTP server. */
-const server = http.createServer(app);
-/** Listen on provided port, on all network interfaces. */
-server.listen(port, () => console.log(`Server Running on port ${port}`));
+module.exports = app; 
+ 
