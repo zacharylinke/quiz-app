@@ -1,7 +1,5 @@
 const Quiz = require('./quizModel');
 const _ = require('lodash');
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quizapp');
 
 exports.params = function(req, res, next, id) {
   Quiz.findById(id)
@@ -28,11 +26,7 @@ exports.delete = function (req, res) {
 exports.get = function (req, res) {
   Quiz.find()
     .then(function(quizzes) {
-      if(!quizzes) {
-        next(new Error('Quiz save failed'));
-      } else {
-        res.json(quizzes);
-      }
+      res.json(quizzes);
   }, function(err) {
     next(err);
   });
