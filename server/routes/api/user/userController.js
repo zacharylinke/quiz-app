@@ -9,6 +9,7 @@ exports.params = function(req, res, next, id) {
         next(new Error('User not found'));
       } else {
         req.user = user;
+        next();
       }
     }, function(err) {
       next(err);
@@ -23,12 +24,6 @@ exports.delete = function (req, res, next) {
       res.json(removed);
     }
   });
-  // User.deleteOne(req.user)
-  //   .then(function(user) {
-  //     res.json(user);
-  //   }, function(err) {
-  //     next(err);
-  //   });
 };
 
 exports.get = function (req, res, next) {
@@ -45,13 +40,12 @@ exports.getOne = function (req, res, next) {
 };
 
 exports.post = function (req, res, next) {
-  console.log(req.body);
   const newUser = new User(req.body);
   newUser.save(function(err, user) {
     if (err) { return next(err);}
     
     const token = signToken(user._id);
-    res.json({token: token});
+    res.json({token: token, _id: user._id});
   });
 };
 
@@ -67,4 +61,8 @@ exports.put = function (req, res, next) {
       res.json(saved);
     }
   });
+};
+
+exports.me = function(req, res) {
+  res.json(req.user.toJson());
 };

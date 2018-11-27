@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag",
     "prebuild": "webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag --progress",
     "build": "forever start --minUptime 1000 --spinSleepTime 1000 server/index.js",
+    "test-acceptance": "NODE_ENV=testing mocha --exit ./server/**/a-spec.js ",
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },

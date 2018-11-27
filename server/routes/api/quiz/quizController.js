@@ -8,6 +8,7 @@ exports.params = function(req, res, next, id) {
         next(new Error('Quiz not found'));
       } else {
         req.quiz = quiz;
+        next();
       }
     }, function(err) {
       next(err);

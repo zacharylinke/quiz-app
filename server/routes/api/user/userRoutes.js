@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const controller = require('./userController');
+const auth = require('../../../auth/auth');
 
 const checkUser = [auth.decodeToken(), auth.getFreshUser()];
 router.param('id', controller.params);
-router.get('/me', checkUser, controller.me);
+//router.get('/me', checkUser, controller.me);
 
 router.route('/')
   .get(controller.get)
@@ -12,6 +13,6 @@ router.route('/')
 router.route('/:id')
   .get(controller.getOne)
   .put(checkUser, controller.put)
-  .delete(checkUser, controller.delete)
+  .delete(controller.delete)
 
 module.exports = router;
