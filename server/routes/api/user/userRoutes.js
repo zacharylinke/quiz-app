@@ -13,6 +13,6 @@ router.route('/')
 router.route('/:id')
   .get(controller.getOne)
   .put(checkUser, controller.put)
-  .delete(controller.delete)
+  .delete(checkUser, controller.delete)
 
 module.exports = router;
