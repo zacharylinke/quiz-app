@@ -107,8 +107,6 @@ describe('USERS', function() {
         .end(function(err, resp) {
         done();
       });
-
-      user = {};
     });
   });
 

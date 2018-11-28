@@ -16,12 +16,13 @@ exports.params = function(req, res, next, id) {
 };
 
 exports.delete = function (req, res) {
-  Quiz.deleteOne(req.quiz)
-    .then(function(quiz) {
-      res.json(quiz);
-    }, function(err) {
+  req.quiz.remove(function(err, removed) {
+    if (err) {
       next(err);
-    });
+    } else {
+      res.json(removed);
+    }
+  });
 };
 
 exports.get = function (req, res) {
