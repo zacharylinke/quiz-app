@@ -36,6 +36,16 @@ exports.getFreshUser = function() {
   }
 };
 
+exports.verifyAdminUser = () => {
+  return (req, res, next) => {
+    if(req.user.role !== 'admin') {
+      res.status(401).send('Unauthorized');
+    } else {
+      next();
+    }
+  };
+};
+
 exports.verifyUser = function() {
   return function(req, res, next) {
     var username = req.body.username;

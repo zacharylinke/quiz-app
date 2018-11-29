@@ -3,11 +3,12 @@ const controller = require('./userController');
 const auth = require('../../../auth/auth');
 
 const checkUser = [auth.decodeToken(), auth.getFreshUser()];
+const checkAdminUser = [auth.decodeToken(), auth.getFreshUser(), auth.verifyAdminUser()];
 router.param('id', controller.params);
 //router.get('/me', checkUser, controller.me);
 
 router.route('/')
-  .get(controller.get)
+  .get(checkAdminUser, controller.get)
   .post(controller.post)
 
 router.route('/:id')

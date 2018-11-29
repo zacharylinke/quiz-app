@@ -1,6 +1,6 @@
 const app = require('../../../index');
 const request = require('supertest');
-const expect = require('chai').expect;
+//const expect = require('chai').expect;
 
 describe('QUIZZES', () => {
   const baseUrl = '/api/v1/quizzes';
@@ -8,7 +8,6 @@ describe('QUIZZES', () => {
     title: 'test quiz'
   };
   let currentUser = {};
-
 
   before(done => {
     request(app)

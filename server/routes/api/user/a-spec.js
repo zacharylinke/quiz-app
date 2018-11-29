@@ -1,6 +1,7 @@
+'use strict';
+
 const app = require('../../../index');
 const request = require('supertest');
-const expect = require('chai').expect;
 
 describe('USERS', function() {
   const baseUrl = '/api/v1/users';
@@ -9,6 +10,9 @@ describe('USERS', function() {
     password: 'test'
   };
 
+  /**
+   * DELETE
+   */
   describe('DELETE', function() {
     it('should delete a user', function(done) {
       request(app)
@@ -28,24 +32,33 @@ describe('USERS', function() {
       });
   });
 
-  describe('POST, GET, PUT', function() {
+  describe('POST, GET, PUT', () => {
     let user;
 
-    it('should create a user', function(done) {
+    /**
+     * GET
+     */
+    it('should get a list of users if request made by an admin', done => {
+      const testUser = Object.assign({role: 'admin'}, setUser);
       request(app)
         .post(baseUrl)
-        .send(setUser)
-        .set('Accept', 'application/json')
-        .expect(200)
-        .end(function(err, resp) {
-          // TODO - more specific test here
-          expect(resp.body).to.be.an('object');
+        .send(testUser)
+        .end((err, resp) => {
           user = resp.body;
-          done();
-        });
+          request(app)
+            .get(baseUrl)
+            .set('Accept', 'application/json')
+            .set('Authorization', 'Bearer ' + user.token)
+            .expect(200)
+            .end((err,resp) => {
+              // TODO - more specific test here
+              expect(resp.body).to.be.an('array');
+              done(err);
+            });
+        })
     });
 
-    it('should get a list of users', function(done) {
+    it('should return 401 if user is not an admin', done => {
       request(app)
         .post(baseUrl)
         .send(setUser)
@@ -54,16 +67,15 @@ describe('USERS', function() {
           request(app)
             .get(baseUrl)
             .set('Accept', 'application/json')
-            .expect(200)
+            .set('Authorization', 'Bearer ' + user.token)
+            .expect(401)
             .end((err,resp) => {
-              // TODO - more specific test here
-              expect(resp.body).to.be.an('array');
-              done();
+              done(err);
             });
         })
     });
 
-    it('should get a single user by id', (done) => {
+    it('should get a single user by id', done => {
       request(app)
         .post(baseUrl)
         .send(setUser)
@@ -80,7 +92,10 @@ describe('USERS', function() {
         });
     });
 
-    it('should update a single user', (done) => {
+    /**
+     * PUT
+     */
+    it('should update a single user', done => {
       request(app)
         .post(baseUrl)
         .send(setUser)
@@ -96,6 +111,23 @@ describe('USERS', function() {
               expect(resp.body.username).to.eql('new username');
               done();
             });
+        });
+    });
+
+    /**
+     * POST
+     */
+    it('should create a user', done => {
+      request(app)
+        .post(baseUrl)
+        .send(setUser)
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end(function(err, resp) {
+          // TODO - more specific test here
+          expect(resp.body).to.be.an('object');
+          user = resp.body;
+          done();
         });
     });
 
